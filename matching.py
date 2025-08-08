@@ -22,7 +22,6 @@ for human_id, preferences in enumerate(all_preferences_sorted):
     
 # ポイントが高い順にソート
 preference_combination.sort(key=lambda x:x[1], reverse=True)
-#print(preference_combination)
 
 # ポイントが高い順に確定させていく
 # 確定したペアと確定した人
