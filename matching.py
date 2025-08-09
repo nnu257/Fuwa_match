@@ -9,7 +9,6 @@ AVOID_SAME_GENDER_MATCHING = True
 MALE_MAX = int(input("男性の人数を入力してください"))
 print(f"男性の人数：{MALE_MAX}")
 
-
 # preferences.csvの読み込み
 lines = open("preferences.csv").readlines()
 all_preferences_unsorted_with_id = [list(map(int, line.split(","))) for line in lines]
