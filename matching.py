@@ -15,8 +15,8 @@ all_preferences_sorted_with_id = sorted(all_preferences_unsorted_with_id, key=la
 
 # 人数
 human_max = 0
-for human_id in all_preferences_sorted_with_id:
-    human_max = max(human_max, human_id)
+for human in all_preferences_sorted_with_id:
+    human_max = max(human_max, human[0])
 
 # ポイント数を保存する変数．[ペア，ポイント，相互かどうか]
 preference_combination = [[x, 0, 0] for x in itertools.combinations(range(1,human_max+1),2)]
