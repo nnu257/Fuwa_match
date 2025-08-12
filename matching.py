@@ -7,22 +7,23 @@ MUTUAL_PREF = True
 # 同性のマッチングを許さない
 AVOID_SAME_GENDER_MATCHING = True
 MALE_MAX = int(input("男性の人数を入力してください"))
-print(f"男性の人数：{MALE_MAX}")
 
 # preferences.csvの読み込み
 lines = open("preferences.csv").readlines()[1:]
 all_preferences_unsorted_with_id = [list(map(int, line.split(",")[1:])) for line in lines]
 all_preferences_sorted_with_id = sorted(all_preferences_unsorted_with_id, key=lambda x:x[0])
-all_preferences_sorted = [x[1:] for x in all_preferences_sorted_with_id]
 
 # 人数
-human_max = len(all_preferences_sorted)
+human_max = 0
+for human_id in all_preferences_sorted_with_id:
+    human_max = max(human_max, human_id)
 
 # ポイント数を保存する変数．[ペア，ポイント，相互かどうか]
 preference_combination = [[x, 0, 0] for x in itertools.combinations(range(1,human_max+1),2)]
 
 # ポイント計上
-for human_id, preferences in enumerate(all_preferences_sorted):    
+for human_id, preferences in enumerate(all_preferences_sorted_with_id):  
+    preferences = preferences[1:]
     for rank, preference in enumerate(preferences):
         for comb_id, comb in enumerate(preference_combination):
             if human_id+1 in comb[0] and preference in comb[0]:
