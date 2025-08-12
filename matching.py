@@ -10,8 +10,8 @@ MALE_MAX = int(input("男性の人数を入力してください"))
 print(f"男性の人数：{MALE_MAX}")
 
 # preferences.csvの読み込み
-lines = open("preferences.csv").readlines()
-all_preferences_unsorted_with_id = [list(map(int, line.split(",")))[1:] for line in lines][1:]
+lines = open("preferences.csv").readlines()[1:]
+all_preferences_unsorted_with_id = [list(map(int, line.split(",")))[1:] for line in lines]
 all_preferences_sorted_with_id = sorted(all_preferences_unsorted_with_id, key=lambda x:x[0])
 all_preferences_sorted = [x[1:] for x in all_preferences_sorted_with_id]
 
